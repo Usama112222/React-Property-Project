@@ -6,8 +6,6 @@ It features multiple sections like Hero, About, Services, Properties, Messages, 
 
 ---
 
-
-
 ## 📸 Project Screenshots
 
 ### 🏠 Home / Hero Section
@@ -41,50 +39,14 @@ It features multiple sections like Hero, About, Services, Properties, Messages, 
 
 ---
 
-## 🧠 Project Structure
-
-
-React-property-project/
-│
-├── images/
-│ ├── home.PNG
-│ ├── about.PNG
-│ ├── about1.PNG
-│ ├── services.PNG
-│ ├── message.PNG
-│ ├── test.PNG
-│
-├── src/
-│ ├── about/
-│ ├── assets/
-│ ├── footer/
-│ ├── hero/
-│ ├── message/
-│ ├── navigation/
-│ ├── properties/
-│ ├── services/
-│ ├── Testnonial/
-│ ├── App.jsx
-│ ├── main.jsx
-│ ├── index.css
-│ ├── scroll.jsx
-│
-├── public/
-├── package.json
-├── vite.config.js
-└── README.md
-
-
----
-
 ## 🛠️ Tech Stack
 
-- :contentReference[oaicite:1]{index=1}
-- :contentReference[oaicite:2]{index=2}
-- :contentReference[oaicite:3]{index=3}
-- JavaScript (ES6+)
-- AOS Animation Library
-- React Icons
+- ⚛️ React (ES6+)
+- ⚡ Vite
+- 🎨 Tailwind CSS
+- 🟨 JavaScript
+- 🎬 AOS Animations
+- 🎯 React Icons
 
 ---
 
