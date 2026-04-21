@@ -1,66 +1,134 @@
 import './navigation.css'
 import logo from "../assets/logo.png"
+import { useState } from 'react'
+import { 
+  FaPhone, 
+  FaUser, 
+  FaBars, 
+  FaTimes,
+  FaHome,
+  FaInfoCircle,
+  FaBuilding,
+  FaServicestack,
+  FaUsers,
+  FaEnvelope
+} from 'react-icons/fa'
 
+function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
- function Navigation(){
-    return (
-        <nav className="light bg-[#f3f3f3] flex justify-between items-center gap-4 bg- lg:px-20 px-4 py-3 sticky top-0 z-30">
+  const navLinks = [
+    { name: 'Home', href: '#', icon: <FaHome className="mr-2" /> },
+    { name: 'About', href: '#', icon: <FaInfoCircle className="mr-2" /> },
+    { name: 'Properties', href: '#', icon: <FaBuilding className="mr-2" /> },
+    { name: 'Services', href: '#', icon: <FaServicestack className="mr-2" /> },
+    { name: 'Testimonials', href: '#', icon: <FaUsers className="mr-2" /> },
+    { name: 'Contact', href: '#', icon: <FaEnvelope className="mr-2" /> }
+  ]
 
-            <div id="logo">
-                <img src={logo} alt="" className="lg:w-[150px] w-[120px] dark:invert"/>
-            </div>
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
-           <ul className="lg:flex justify-center items-center gap-8 hidden">
-               <a className="text-black text-[15px] uppercase font-semibold cursor-pointer px-3 py-2 dark:text-white rounded-lg hover:bg-red-600 hover:text-white">
-                  Home
-               </a>
-               <a className="text-black text-[15px] uppercase font-semibold cursor-pointer px-3 py-2 dark:text-white rounded-lg hover:bg-red-600 hover:text-white">
-                  About
-                </a>
-                <a className="text-black text-[15px] uppercase font-semibold cursor-pointer px-3 py-2 dark:text-white rounded-lg hover:bg-red-600 hover:text-white">
-                 Properties
-                </a>
-                <a className="text-black text-[15px] uppercase font-semibold cursor-pointer px-3 py-2 dark:text-white rounded-lg hover:bg-red-600 hover:text-white">
-                 Services
-                </a>
-                <a className="text-black text-[15px] uppercase font-semibold cursor-pointer px-3 py-2 dark:text-white rounded-lg hover:bg-red-600 hover:text-white">Testimonials</a><a className="text-black text-[15px] uppercase font-semibold cursor-pointer px-3 py-2 dark:text-white rounded-lg hover:bg-red-600 hover:text-white">
-                 Contact
-                </a>
-            </ul>
+  return (
+    <nav className="light bg-white shadow-md flex justify-between items-center gap-4 lg:px-20 px-4 py-3 sticky top-0 z-30 transition-all duration-300">
+      
+      {/* Logo */}
+      <div id="logo" className="flex-shrink-0">
+        <img 
+          src={logo} 
+          alt="Company Logo" 
+          className="lg:w-[150px] w-[120px] dark:invert cursor-pointer transition-transform hover:scale-105"
+        />
+      </div>
 
-            <div className="flex justify-center items-center lg:hidden">
-                <div>
-                    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" className="text-black dark:text-white text-2xl cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
-                    </svg>
-                </div>
-            </div>
+      {/* Desktop Navigation */}
+      <ul className="lg:flex justify-center items-center gap-2 hidden">
+        {navLinks.map((link, index) => (
+          <li key={index}>
+            <a 
+              href={link.href}
+              className="text-gray-700 text-[15px] uppercase font-semibold cursor-pointer px-4 py-2 rounded-lg 
+                       hover:bg-red-600 hover:text-white transition-all duration-300 flex items-center group"
+            >
+              <span className="mr-0 group-hover:mr-2 transition-all duration-300">{link.icon}</span>
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
 
-            <div className="hidden w-full h-fit bg-slate-800 p-4 absolute top-[80px] left-0">
-                <ul className="flex flex-col justify-center items-center gap-2 w-full">
-                    <a className="text-white uppercase font-semibold cursor-pointer p-3 rounded-lg hover:bg-red-600 hover:text-black w-full text-center">Home</a>
-                    <a className="text-white uppercase font-semibold cursor-pointer p-3 rounded-lg hover:bg-red-600 hover:text-black w-full text-center">About</a>
-                    <a className="text-white uppercase font-semibold cursor-pointer p-3 rounded-lg hover:bg-red-600 hover:text-black w-full text-center">Properties</a>
-                    <a className="text-white uppercase font-semibold cursor-pointer p-3 rounded-lg hover:bg-red-600 hover:text-black w-full text-center">Services</a>
-                    <a className="text-white uppercase font-semibold cursor-pointer p-3 rounded-lg hover:bg-red-600 hover:text-black w-full text-center">Testimonials</a>
-                    <a className="text-white uppercase font-semibold cursor-pointer p-3 rounded-lg hover:bg-red-600 hover:text-black w-full text-center">Contact</a>
-                </ul>
-            </div>
+      {/* Mobile Menu Button */}
+      <div className="flex justify-center items-center lg:hidden">
+        <button 
+          onClick={toggleMenu}
+          className="text-gray-700 dark:text-white text-2xl cursor-pointer hover:text-red-600 transition-colors"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
 
-            <div className="flex justify-center items-center lg:gap-8 gap-2">
-                <div className="flex justify-center items-center lg:gap-3 gap-1">
-                    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="size-5 text-red-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
-                    </svg>
+      {/* Mobile Navigation Menu */}
+      <div className={`lg:hidden fixed top-[72px] left-0 w-full bg-white shadow-lg transition-all duration-300 transform ${
+        isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+      }`}>
+        <ul className="flex flex-col justify-center items-stretch gap-1 p-4">
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <a 
+                href={link.href}
+                className="text-gray-700 uppercase font-semibold cursor-pointer p-3 rounded-lg 
+                         hover:bg-red-600 hover:text-white transition-all duration-300 w-full text-left 
+                         flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="mr-3 text-red-600">{link.icon}</span>
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-                    <h1 className="lg:text-xl text-sm text-black dark:text-white font-semibold">888-908-9102</h1>
-
-                </div>
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 496 512" className="size-6 text-red-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>
-            </div>
-
-        </nav>
-)}
+      {/* Contact Info & User Profile */}
+      <div className="flex justify-center items-center lg:gap-6 gap-3">
+        {/* Phone Number */}
+        <div className="flex justify-center items-center lg:gap-3 gap-2 group">
+          <FaPhone className="size-5 text-red-600 group-hover:animate-pulse" />
+          <h1 className="lg:text-lg text-sm text-gray-800 dark:text-white font-semibold">
+            888-908-9102
+          </h1>
+        </div>
         
+        {/* Divider */}
+        <div className="hidden lg:block w-px h-8 bg-gray-300"></div>
+        
+        {/* User Profile Icon */}
+        <div className="flex justify-center items-center">
+          <div className="relative group">
+            <FaUser className="size-5 text-gray-600 cursor-pointer hover:text-red-600 transition-colors" />
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible 
+                          group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+              <div className="py-2">
+                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-600 hover:text-white">
+                  Sign In
+                </a>
+                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-600 hover:text-white">
+                  Register
+                </a>
+                <hr className="my-1" />
+                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-600 hover:text-white">
+                  Dashboard
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  )
+}
+
 export default Navigation
-        

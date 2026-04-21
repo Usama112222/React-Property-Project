@@ -4,7 +4,6 @@ import './index.css'
 import Navigation from './navigation/navigation.jsx'
 import Hero from './hero/hero.jsx'
 import About from './about/about.jsx'
-import About1 from './about1/about1.jsx'
 import Properties from './properties/properties.jsx'
 import Services from './services/sevices.jsx'
 import Testmonial from './Testnonial/testmonial.jsx'
@@ -18,7 +17,6 @@ createRoot(document.getElementById('root')).render(
       <Navigation/>
       <Hero/>
       <About/>
-      <About1/>
       <Properties/>
       <Services/>
       <Testmonial/>
