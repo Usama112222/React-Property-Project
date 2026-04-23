@@ -59,7 +59,7 @@ https://react-property-project.vercel.app/
 
 Clone the repository:
 
-```bash
+
 git clone https://github.com/your-username/React-property-project.git
 
 Navigate into project:
@@ -72,11 +72,11 @@ npm install
 
 Run the project:
 
-npm run dev
+npm run dev``` 
 
 ---
 
-🚀 Future Improvements
+## 🚀 Future Improvements
 Add backend integration (Node.js / Firebase)
 Real property API integration
 Authentication system (login/register)
@@ -85,12 +85,14 @@ Admin dashboard for property management
 
 ---
 
-👨‍💻 Author
+## 👨‍💻 Author
+
+## Usama Liaqat
 GitHub: https://github.com/Usama112222
-LinkedIn: (add your link here)
+
 
 ---
 
-⭐ Support
+## ⭐ Support
 
 If you like this project, please give it a ⭐ on GitHub!
